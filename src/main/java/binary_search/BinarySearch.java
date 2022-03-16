@@ -20,10 +20,11 @@ public class BinarySearch {
         int leftEdge = 0;
         int rightEdge = elements.size();
 
-        while (true) {
+        while (leftEdge != rightEdge) {
             int currIndex = (leftEdge + rightEdge) / 2;
 
             int compareResult = comparator.compare(item, elements.get(currIndex));
+
             if (compareResult == 0) {
                 return currIndex;
             } else if (compareResult < 0) {
@@ -31,11 +32,9 @@ public class BinarySearch {
             } else {
                 leftEdge = currIndex + 1;
             }
-
-            if (leftEdge == rightEdge) {
-                return null;
-            }
         }
+
+        return null;
     }
 
     public Integer integerSearch(List<Integer> elements, Integer item) {
