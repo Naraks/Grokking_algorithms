@@ -41,6 +41,20 @@ class BinarySearchTest {
     }
 
     @Test
+    void searchNoneExistenceElement() {
+        List<LocalDate> elements = List.of(LocalDate.of(2022, 2, 1),
+                                           LocalDate.of(2022, 2, 2),
+                                           LocalDate.of(2022, 2, 3),
+                                           LocalDate.of(2022, 2, 4),
+                                           LocalDate.of(2022, 2, 6));
+
+        LocalDate element = LocalDate.of(2022, 2, 5);
+
+        Integer result = bs.search(elements, element, LocalDate::compareTo);
+        Assertions.assertNull(result);
+    }
+
+    @Test
     void integerSearch() {
         List<Integer> elements = List.of(0, 1, 2, 3, 4, 5, 6, 7, 8);
         Integer element = 4;
