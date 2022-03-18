@@ -13,9 +13,10 @@ public class QuickSort {
 
         List<T> leftList = new ArrayList<>();
         List<T> rightList = new ArrayList<>();
-        T pivot = list.get(0);
+        T pivot = list.get(list.size() / 2);
 
-        for(int i = 1; i < list.size(); i++) {
+        for(int i = 0; i < list.size(); i++) {
+            if (i == list.size() / 2) continue;
             if (comparator.compare(list.get(i), pivot) <= 0) {
                 leftList.add(list.get(i));
             } else {
