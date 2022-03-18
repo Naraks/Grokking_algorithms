@@ -6,6 +6,30 @@ import java.util.List;
 public class BinarySearch {
 
     /**
+     * recursive binary search
+     *
+     * @param elements sorted array of elements
+     * @param item desired element
+     * @return desired element or null if element not found
+     */
+    public <T> T recursiveSearch(List<T> elements, T item, Comparator<T> comparator) {
+        if (elements == null || elements.isEmpty()) {
+            return null;
+        }
+
+        int currIndex = elements.size() / 2;
+        int compareResult = comparator.compare(item, elements.get(currIndex));
+
+        if (compareResult == 0) {
+            return elements.get(currIndex);
+        } else if (compareResult < 0) {
+            return recursiveSearch(elements.subList(0, currIndex), item, comparator);
+        } else {
+            return recursiveSearch(elements.subList(currIndex + 1, elements.size()), item, comparator);
+        }
+    }
+
+    /**
      * binary search
      *
      * @param elements sorted array of elements
